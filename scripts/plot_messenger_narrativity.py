@@ -29,8 +29,8 @@ RESULTS_CSV = ROOT_DIR / "csv" / "messenger_speech_narrativity.csv"
 FIG_DIR = ROOT_DIR / "figures"
 
 # Validated categorical pair (scripts/validate_palette.js, light mode: PASS).
-COLOR_MESSENGER = "#2a78d6"
-COLOR_OTHER = "#1baf7a"
+COLOR_MESSENGER = "#799ccd"
+COLOR_OTHER = "#cd9279"
 COLOR_GRID = "#d8d6cd"
 COLOR_TEXT = "#52514e"
 
@@ -53,67 +53,18 @@ def style_axis(ax):
     ax.set_axisbelow(True)
 
 
+def slugify(title: str) -> str:
+    return title.lower().replace(" ", "_")
+
+
+ROLLING_WINDOW = 7
+
+
 def plot_line_position(df: pd.DataFrame, plays: list[dict]) -> None:
     titles = {urn_to_stem(p["urn"]): p["title"] for p in plays}
     speech_ranges = {urn_to_stem(p["urn"]): p["speeches"] for p in plays}
 
-    play_order = sorted(df["play"].unique())
-    n = len(play_order)
-    ncols = 2
-    nrows = -(-n // ncols)
-
-    fig, axes = plt.subplots(
-        nrows, ncols, figsize=(11, 2.6 * nrows), sharey=True, constrained_layout=True
-    )
-    axes = axes.flatten()
-
-    ROLLING_WINDOW = 7
-
-    for ax, play in zip(axes, play_order):
-        play_df = df[df["play"] == play].sort_values("line")
-        for start, end in speech_ranges[play]:
-            ax.axvspan(start, end, color=COLOR_MESSENGER, alpha=0.15, linewidth=0)
-
-        # Individual sentences are too discontinuous to connect with a
-        # line (adjacent clauses can jump from 0 to 1 with no real relation);
-        # a rolling mean shows the local
-        # trend, which is what actually reveals a span "lighting up".
-        ax.scatter(
-            play_df["line"],
-            play_df["p_narrative"],
-            s=5,
-            c=[
-                COLOR_MESSENGER if m else COLOR_OTHER
-                for m in play_df["is_messenger_speech"]
-            ],
-            linewidths=0,
-            alpha=0.35,
-            zorder=2,
-        )
-        rolling = (
-            play_df["p_narrative"]
-            .rolling(ROLLING_WINDOW, center=True, min_periods=1)
-            .mean()
-        )
-        ax.plot(
-            play_df["line"],
-            rolling,
-            color=COLOR_TEXT,
-            linewidth=1.3,
-            zorder=3,
-        )
-
-        ax.set_title(titles.get(play, play), fontsize=9, color=COLOR_TEXT, loc="left")
-        ax.set_ylim(-0.05, 1.05)
-        style_axis(ax)
-
-    for ax in axes[n:]:
-        ax.set_visible(False)
-
-    for ax in axes[::ncols]:
-        ax.set_ylabel("P(narrative)", fontsize=8, color=COLOR_TEXT)
-    for ax in axes[max(0, n - ncols) : n]:
-        ax.set_xlabel("line number", fontsize=8, color=COLOR_TEXT)
+    FIG_DIR.mkdir(exist_ok=True, parents=True)
 
     handles = [
         plt.Line2D(
@@ -135,24 +86,64 @@ def plot_line_position(df: pd.DataFrame, plays: list[dict]) -> None:
             label=f"{ROLLING_WINDOW}-sentence rolling mean",
         ),
     ]
-    fig.legend(
-        handles=handles,
-        loc="lower center",
-        ncol=3,
-        frameon=False,
-        fontsize=8,
-        bbox_to_anchor=(0.5, -0.02),
-    )
-    fig.suptitle(
-        "P(narrative) by line position, with known messenger-speech ranges shaded",
-        fontsize=11,
-        color=COLOR_TEXT,
-    )
 
-    FIG_DIR.mkdir(exist_ok=True, parents=True)
-    out_path = FIG_DIR / "line_position.png"
-    fig.savefig(out_path, dpi=200, bbox_inches="tight")
-    print(f"Wrote {out_path}")
+    for play in sorted(df["play"].unique()):
+        play_df = df[df["play"] == play].sort_values("line")
+        title = titles.get(play, play)
+
+        fig, ax = plt.subplots(figsize=(9, 3.2), constrained_layout=True)
+
+        for start, end in speech_ranges[play]:
+            ax.axvspan(start, end, color=COLOR_MESSENGER, alpha=0.15, linewidth=0)
+
+        # Individual sentences are too discontinuous to connect with a
+        # line (adjacent clauses can jump from 0 to 1 with no real relation);
+        # a rolling mean shows the local trend, which is what actually
+        # reveals a span "lighting up".
+        ax.scatter(
+            play_df["line"],
+            play_df["p_narrative"],
+            s=8,
+            c=[
+                COLOR_MESSENGER if m else COLOR_OTHER
+                for m in play_df["is_messenger_speech"]
+            ],
+            linewidths=0,
+            alpha=0.4,
+            zorder=2,
+        )
+        rolling = (
+            play_df["p_narrative"]
+            .rolling(ROLLING_WINDOW, center=True, min_periods=1)
+            .mean()
+        )
+        ax.plot(
+            play_df["line"],
+            rolling,
+            color=COLOR_TEXT,
+            linewidth=1.3,
+            zorder=3,
+        )
+
+        ax.set_title(title, fontsize=11, color=COLOR_TEXT, loc="left")
+        ax.set_ylim(-0.05, 1.05)
+        ax.set_ylabel("P(narrative)", fontsize=9, color=COLOR_TEXT)
+        ax.set_xlabel("line number", fontsize=9, color=COLOR_TEXT)
+        style_axis(ax)
+
+        ax.legend(
+            handles=handles,
+            loc="upper center",
+            ncol=1,
+            frameon=False,
+            fontsize=7,
+            bbox_to_anchor=(1.18, 1.0),
+        )
+
+        out_path = FIG_DIR / f"line_position_{slugify(title)}.png"
+        fig.savefig(out_path, dpi=200, bbox_inches="tight")
+        plt.close(fig)
+        print(f"Wrote {out_path}")
 
 
 def plot_distribution(df: pd.DataFrame) -> None:

@@ -1,5 +1,5 @@
 [project]
-name = "grc-epic-tragedy-sentence-classification-no-nestor-no-apologoi-no-soph-electra"
+name = "tragedy-narrativity"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"

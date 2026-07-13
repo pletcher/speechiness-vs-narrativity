@@ -38,17 +38,14 @@ from pathlib import Path
 
 import pandas as pd
 import torch
+
 from scipy.stats import fisher_exact, mannwhitneyu, wilcoxon
 from transformers import AutoModelForSequenceClassification, AutoTokenizer
 
 ROOT_DIR = Path(__file__).parent.parent
 CONLLU_DIR = ROOT_DIR / "conllu"
 MESSENGER_SPEECHES_JSON = ROOT_DIR / "messenger_speeches.json"
-MODEL_DIR = Path(
-    "/Users/pletcher/code/pletcher/grc-homeric-speech-narrative-sentence-classification"
-    "/speech-narrative_classification_model_output"
-    "/finetuned-sequence-classification-sentences-best-model"
-)
+MODEL = "pletcher/grc-homeric-speech-narrative-sentence-classification"
 OUT_CSV = ROOT_DIR / "csv" / "messenger_speech_narrativity.csv"
 
 NARRATIVE_LABEL_ID = 0
@@ -149,8 +146,8 @@ def build_sentence_table() -> pd.DataFrame:
 
 def classify(df: pd.DataFrame) -> pd.DataFrame:
     device = torch.device("mps") if torch.backends.mps.is_available() else "cpu"
-    tokenizer = AutoTokenizer.from_pretrained(str(MODEL_DIR))
-    model = AutoModelForSequenceClassification.from_pretrained(str(MODEL_DIR))
+    tokenizer = AutoTokenizer.from_pretrained(MODEL)
+    model = AutoModelForSequenceClassification.from_pretrained(MODEL)
     model.to(device)
     model.eval()
 
@@ -166,7 +163,7 @@ def classify(df: pd.DataFrame) -> pd.DataFrame:
                 truncation=True,
                 max_length=512,
                 return_tensors="pt",
-            ).to(device)  # ty:ignore[call-non-callable]
+            ).to(device)
             logits = model(**inputs).logits
             probs = torch.softmax(logits, dim=-1)
             p_narrative.extend(probs[:, NARRATIVE_LABEL_ID].cpu().tolist())

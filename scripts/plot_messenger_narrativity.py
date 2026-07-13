@@ -74,9 +74,9 @@ def plot_line_position(df: pd.DataFrame, plays: list[dict]) -> None:
         for start, end in speech_ranges[play]:
             ax.axvspan(start, end, color=COLOR_MESSENGER, alpha=0.15, linewidth=0)
 
-        # Individual sentences are too jagged/discontinuous to connect with a
-        # line (adjacent clauses can jump from 0 to 1 with no real relation),
-        # so raw values are a faint scatter; a rolling mean shows the local
+        # Individual sentences are too discontinuous to connect with a
+        # line (adjacent clauses can jump from 0 to 1 with no real relation);
+        # a rolling mean shows the local
         # trend, which is what actually reveals a span "lighting up".
         ax.scatter(
             play_df["line"],
@@ -164,7 +164,7 @@ def plot_distribution(df: pd.DataFrame) -> None:
     parts = ax.violinplot(
         [other, messenger], positions=[0, 1], showmedians=True, widths=0.8
     )
-    for body, color in zip(parts["bodies"], [COLOR_OTHER, COLOR_MESSENGER]):  # ty:ignore[not-iterable, invalid-argument-type]
+    for body, color in zip(parts["bodies"], [COLOR_OTHER, COLOR_MESSENGER]):
         body.set_facecolor(color)
         body.set_edgecolor("none")
         body.set_alpha(0.55)

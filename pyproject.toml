@@ -1,0 +1,15 @@
+[project]
+name = "grc-epic-tragedy-sentence-classification-no-nestor-no-apologoi-no-soph-electra"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "datasets>=5.0.0",
+    "matplotlib>=3.11.0",
+    "pandas>=3.0.3",
+    "scikit-learn>=1.9.0",
+    "scipy>=1.18.0",
+    "torch>=2.13.0",
+    "transformers[torch]>=5.13.1",
+]

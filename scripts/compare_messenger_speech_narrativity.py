@@ -34,8 +34,10 @@ to mark a speech as a messenger's speech.
 
 import json
 import re
+
 from pathlib import Path
 
+import conllu
 import pandas as pd
 import torch
 
@@ -51,7 +53,7 @@ OUT_CSV = ROOT_DIR / "csv" / "messenger_speech_narrativity.csv"
 NARRATIVE_LABEL_ID = 0
 BATCH_SIZE = 32
 
-REF_RE = re.compile(r"Ref=(\d+)(?:\.(\d+))?")
+REF_RE = re.compile(r"(\d+)(?:\.(\d+))?")
 
 
 def urn_to_stem(urn: str) -> str:
@@ -77,25 +79,26 @@ def parse_conllu_sentences(path: Path):
             sentences.append((sent_id, text, min(lines_seen), max(lines_seen)))
 
     with open(path, encoding="utf-8") as f:
-        for raw_line in f:
-            line = raw_line.rstrip("\n")
-            if line.startswith("# sent_id ="):
-                flush()
-                sent_id = line.split("=", 1)[1].strip()
-                text = None
-                lines_seen = []
-            elif line.startswith("# text ="):
-                text = line.split("=", 1)[1].strip()
-            elif line and not line.startswith("#"):
-                fields = line.split("\t")
-                if "." in fields[0] or "-" in fields[0]:
-                    continue  # empty node / multiword token
-                match = REF_RE.search(fields[-1])
-                if match is None:
-                    continue
-                line_num, _sub_line = match.groups()
-                any_ref_in_file = True
-                lines_seen.append(int(line_num))
+        conll_sentences = conllu.parse(f.read())
+
+        for sent in conll_sentences:
+            flush()
+            sent_id = sent.metadata.get("sent_id")
+            text = sent.metadata.get("text")
+            lines_seen = []
+
+            for tok in sent:
+                misc = tok.get("misc")
+                if misc:
+                    ref = misc.get("Ref")
+                    if ref:
+                        match = REF_RE.search(ref)
+
+                        if match:
+                            line_num, _sub_line = match.groups()
+                            any_ref_in_file = True
+                            lines_seen.append(int(line_num))
+
     flush()
 
     return sentences if any_ref_in_file else None
@@ -147,6 +150,10 @@ def build_sentence_table() -> pd.DataFrame:
 def classify(df: pd.DataFrame) -> pd.DataFrame:
     device = torch.device("mps") if torch.backends.mps.is_available() else "cpu"
     tokenizer = AutoTokenizer.from_pretrained(MODEL)
+
+    if tokenizer is None:
+        raise ValueError(f"`tokenizer` cannot be None. Check that {MODEL} exists.")
+
     model = AutoModelForSequenceClassification.from_pretrained(MODEL)
     model.to(device)
     model.eval()

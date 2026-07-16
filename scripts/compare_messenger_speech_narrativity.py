@@ -46,7 +46,7 @@ from transformers import AutoModelForSequenceClassification, AutoTokenizer
 
 ROOT_DIR = Path(__file__).parent.parent
 CONLLU_DIR = ROOT_DIR / "conllu"
-MESSENGER_SPEECHES_JSON = ROOT_DIR / "messenger_speeches.json"
+MESSENGER_SPEECHES_JSON = ROOT_DIR / "json" / "messenger_speeches.json"
 MODEL = "pletcher/grc-homeric-speech-narrative-sentence-classification"
 OUT_CSV = ROOT_DIR / "csv" / "messenger_speech_narrativity.csv"
 

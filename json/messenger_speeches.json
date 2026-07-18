@@ -1,6 +1,15 @@
 [
 	{
 		"dramatist": "Aeschylus",
+		"messenger_speech_pct": 0,
+		"speeches": [],
+		"title": "Prometheus Bound",
+		"total_lines": 0,
+		"urn": "urn:cts:greekLit:tlg0085.tlg001",
+		"year": -480
+	},
+	{
+		"dramatist": "Aeschylus",
 		"messenger_speech_pct": 0.16728624535315986,
 		"speeches": [
 			[
@@ -87,6 +96,24 @@
 		"title": "Agamemnon",
 		"total_lines": 1673,
 		"urn": "urn:cts:greekLit:tlg0085.tlg005",
+		"year": -458
+	},
+	{
+		"dramatist": "Aeschylus",
+		"messenger_speech_pct": 0,
+		"speeches": [],
+		"title": "Choephoroi",
+		"total_lines": 0,
+		"urn": "urn:cts:greekLit:tlg0085.tlg006",
+		"year": -458
+	},
+	{
+		"dramatist": "Aeschylus",
+		"messenger_speech_pct": 0,
+		"speeches": [],
+		"title": "Eumenides",
+		"total_lines": 0,
+		"urn": "urn:cts:greekLit:tlg0085.tlg007",
 		"year": -458
 	},
 	{

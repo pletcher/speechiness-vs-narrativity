@@ -187,7 +187,7 @@ def report(df: pd.DataFrame) -> None:
     # plays). A Wilcoxon signed-rank test on the per-play paired differences
     # tests whether the effect holds up play-by-play rather than because a
     # few high-baseline or messenger-heavy plays dominate the pooled sample.
-    per_play_diff = per_play["messenger"] - per_play["other"]
+    per_play_diff = per_play["messenger"].fillna(0) - per_play["other"]
     print("\nPer-play (messenger - other) P(narrative) difference:")
     print(per_play_diff)
     w_stat, w_p = wilcoxon(per_play_diff, alternative="greater")

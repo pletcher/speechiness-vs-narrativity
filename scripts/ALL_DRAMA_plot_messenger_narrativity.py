@@ -1,5 +1,6 @@
 from pathlib import Path
 
+import altair as alt
 import matplotlib.pyplot as plt
 import pandas as pd
 from scipy.stats import mannwhitneyu
@@ -47,7 +48,7 @@ ROLLING_WINDOW = 7
 
 
 def plot_line_position(df: pd.DataFrame, plays: list[dict]) -> None:
-    titles = {urn_to_stem(p["urn"]): p["title"] for p in plays}
+    titles = {urn_to_stem(p["urn"]): f"{p['dramatist']}, {p['title']}" for p in plays}
     speech_ranges = {urn_to_stem(p["urn"]): p["speeches"] for p in plays}
 
     FIG_DIR.mkdir(exist_ok=True, parents=True)
@@ -150,14 +151,26 @@ def plot_distribution(df: pd.DataFrame) -> None:
         parts[key].set_linewidth(1)
 
     for x, series, color in [(0, other, COLOR_OTHER), (1, messenger, COLOR_MESSENGER)]:
+        mean = series.mean()
         ax.scatter(
             [x],
-            [series.mean()],
+            [mean],
             marker="D",
             s=28,
             color=color,
             edgecolor=COLOR_TEXT,
             linewidth=0.6,
+            zorder=4,
+        )
+        ax.annotate(
+            f"{mean:.3f}",
+            (x, mean),
+            xytext=(8, 0),
+            textcoords="offset points",
+            ha="left",
+            va="center",
+            fontsize=8,
+            color=COLOR_TEXT,
             zorder=4,
         )
 
@@ -196,11 +209,87 @@ def plot_distribution(df: pd.DataFrame) -> None:
     print(f"Wrote {out_path}")
 
 
+def plot_change_over_time(df: pd.DataFrame, plays: list[dict]) -> None:
+    year_by_play = {urn_to_stem(p["urn"]): p["year"] for p in plays}
+    dramatist_by_play = {urn_to_stem(p["urn"]): p["dramatist"] for p in plays}
+    title_by_play = {urn_to_stem(p["urn"]): p["title"] for p in plays}
+
+    per_play = (
+        df.groupby(["play", "is_messenger_speech"])["p_narrative"].mean().reset_index()
+    )
+
+    per_play["year"] = per_play["play"].map(year_by_play)
+    per_play["dramatist"] = per_play["play"].map(dramatist_by_play)
+    per_play["title"] = per_play["play"].map(title_by_play)
+    per_play["category"] = per_play["is_messenger_speech"].map(
+        {True: "messenger speech", False: "other tragedy"}
+    )
+    per_play = per_play.dropna(subset=["year"])
+
+    category_scale = alt.Scale(
+        domain=["messenger speech", "other tragedy"],
+        range=[COLOR_MESSENGER, COLOR_OTHER],
+    )
+
+    points = (
+        alt.Chart(per_play)
+        .mark_circle(size=70, opacity=0.85)
+        .encode(
+            x=alt.X(
+                "year:Q",
+                title="approx. production year (BCE shown as negative)",
+                scale=alt.Scale(domain=[-500, -400]),
+            ),
+            y=alt.Y(
+                "p_narrative:Q",
+                title="mean P(narrative)",
+                scale=alt.Scale(domain=[0, 1]),
+            ),
+            color=alt.Color(
+                "category:N", scale=category_scale, legend=alt.Legend(title=None)
+            ),
+            tooltip=[
+                alt.Tooltip("title:N", title="play"),
+                alt.Tooltip("dramatist:N"),
+                alt.Tooltip("year:Q"),
+                alt.Tooltip("p_narrative:Q", title="mean P(narrative)", format=".3f"),
+            ],
+        )
+    )
+
+    trend = points.transform_regression(
+        "year", "p_narrative", groupby=["category"], method="linear"
+    ).mark_line(size=2)
+
+    chart = (
+        (points + trend)
+        .properties(width=560, height=340, title="Mean P(narrative) by play over time")
+        .configure_axis(
+            gridColor=COLOR_GRID,
+            domainColor=COLOR_GRID,
+            tickColor=COLOR_GRID,
+            labelColor=COLOR_TEXT,
+            titleColor=COLOR_TEXT,
+            labelFontSize=9,
+            titleFontSize=9,
+        )
+        .configure_title(color=COLOR_TEXT, fontSize=11, anchor="start")
+        .configure_legend(labelColor=COLOR_TEXT, labelFontSize=9)
+        .configure_view(strokeWidth=0)
+    )
+
+    FIG_DIR.mkdir(exist_ok=True, parents=True)
+    out_path = FIG_DIR / "ALL_DRAMA_change_over_time.png"
+    chart.save(out_path, scale_factor=2)
+    print(f"Wrote {out_path}")
+
+
 def main():
     df = load_merged()
     plays = load_messenger_speeches()
     plot_line_position(df, plays)
     plot_distribution(df)
+    plot_change_over_time(df, plays)
 
 
 if __name__ == "__main__":

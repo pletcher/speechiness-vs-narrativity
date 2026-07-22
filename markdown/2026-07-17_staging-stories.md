@@ -555,8 +555,24 @@ Such a trend speaks to the trilogy's drive towards action that affects the
 audience: as an etiological tale, the _Oresteia_'s move from narrative to
 speech and action reinforces its explanation for the court on the Areopagus.
 But this movement is not one of diegesis to mimesis; it is rather a movement
-from narrative mimesis to dramatic mimesis, from representation by telling to
-representation by doing. CITATION AND SUPPORTING EVIDENCE
+from narrative mimesis to dramatic mimesis, from representation by telling
+to representation by doing. Cassandra's sudden transformation into a speaking
+role in _Agamemnon_ forms part of this movement, as does Pylades' similar
+transformation in _Choephoroi_.^[See @Raeburn.Thomas2011 [xlvii] for Aeschylus'
+use of the third actor for Cassandra.]
+
+The move away from narrative towards action, punctuated by moments like
+Cassandra's divestment of her priestly accoutrements (1264–67), also works as
+a movement away from the fictional world onstage to the lived experience of the
+audience.^[See @Raeburn.Thomas2011 [203–204] for Cassandra's removal of parts of
+her costume. On this moment, @Wyles2011 [66] writes "Once Cassandra has stripped
+herself of the parts of her costume, which defined her in semiotic terms, then
+she has become 'dead' as a stage character. Her mask remains and may continue
+to identify her, but it offers limited clues to her identity, conveying gender,
+age, and possibly status, but nothing more of 'who' she is. So this 'semiotic
+death' plays out in symbolic visual terms the actual death, which she is
+about to experience off-stage." The movement from semiotic to symbolic closely
+parallels the movement from narrative to active.]
 
 
 ### Euripides' _Suppliants_
@@ -586,5 +602,10 @@ We have to stop thinking about "narrative characters" and start thinking about
 the objects of knowledge themselves can think and know" (@Ranciere2009 17).
 
 - This applies to the interpretive functions on the stage as well
+
+"Fiction is a way of changing existing modes of sensory presentations and forms
+of enunciation; of varying frames, scales and rhythms; and of building new
+relationships between reality and appearance, the individual and the collective"
+(@Ranciere2010 [141]; quoted in @OLeary2024 [57])
 
 ## Conclusion

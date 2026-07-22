@@ -3,7 +3,7 @@ from pathlib import Path
 import altair as alt
 import matplotlib.pyplot as plt
 import pandas as pd
-from scipy.stats import mannwhitneyu
+from scipy.stats import linregress, mannwhitneyu
 
 from ALL_DRAMA_compare_messenger_speeches import (
     build_sentence_table,
@@ -72,6 +72,14 @@ def plot_line_position(df: pd.DataFrame, plays: list[dict]) -> None:
             linewidth=1.3,
             label=f"{ROLLING_WINDOW}-sentence rolling mean",
         ),
+        plt.Line2D(
+            [],
+            [],
+            color=COLOR_TEXT,
+            linewidth=1.3,
+            linestyle="--",
+            label="linear trend",
+        ),
     ]
 
     for play in sorted(df["play"].unique()):
@@ -110,6 +118,26 @@ def plot_line_position(df: pd.DataFrame, plays: list[dict]) -> None:
             color=COLOR_TEXT,
             linewidth=1.3,
             zorder=3,
+        )
+
+        trend = linregress(play_df["line"], play_df["p_narrative"])
+        ax.plot(
+            play_df["line"],
+            trend.intercept + trend.slope * play_df["line"],
+            color=COLOR_TEXT,
+            linewidth=1.3,
+            linestyle="--",
+            zorder=3,
+        )
+        ax.text(
+            0.99,
+            0.99,
+            f"trend p = {trend.pvalue:.2g}",
+            transform=ax.transAxes,
+            ha="right",
+            va="bottom",
+            fontsize=7,
+            color=COLOR_TEXT,
         )
 
         ax.set_title(title, fontsize=11, color=COLOR_TEXT, loc="left")

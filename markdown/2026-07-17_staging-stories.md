@@ -1,10 +1,23 @@
-Staging Stories: Echoes of epic narrativity in Athenian Tragedy
+Narrative Suspects: Echoes of epic narrativity in Athenian Tragedy
 ------
 
+## Abstract
+
+Despite a growing body of innovative approaches to the "messenger function"
+in Greek tragedy, scholars continue to wrestle with a clear definition of
+what makes a "messenger speech." This paper presents and uses a Bidirectional
+Encoder Representations from Transformers (BERT) model to measure speakers'
+"narrativity" in tragedy. The model has been trained to classify speech and
+narrative in the _Iliad_ and the _Odyssey_, and its classification when applied
+to tragedy provides a useful proxy for how narrative a given passage is—that
+is, how much it resembles Homeric narrative. By applying this model to the
+extant tragic corpus, I show that the messenger function in tragedy is less
+a question of "who" and more a question of "when." That is, the results from
+these experiments, alongside three close-reading case studies, suggest that
+we can productively eschew classification of narrative characters in favor of
+identifying narrative _moments_.
+
 ## Introduction
-
-
-## Literature review
 
 ### Choruses and messengers
 
@@ -258,6 +271,9 @@ function" to include these other passages.
 
 ### Euripides _Bacchae_
 
+![Chart showing per-sentence and rolling 7-sentence average narrativity for
+Euripides' _Bacchae_](../figures/ALL_DRAMA_line_position_tlg0006.tlg017.png)
+
 In addition to the Messengers' undeniably narrative speeches in _Bacchae_, the
 parodos also contains marked narrative moments. The ode starts to grow narrative
 around the description of Dionysus' birth in the first antistrophe at 88–104:
@@ -364,19 +380,24 @@ has occurred throughout the plays narrative and dramatic action (@Perris2011a
 43). Richard Buxton, on the other hand, connects the Messengers' narratives
 with the prologue, Pentheus' opening speech, and the speech by the Servant
 who delivers Dionysus (as the Lydian Stranger) to Pentheus—together with the
-two Messengers' reports, Buxton writes, "these five narratives may be seen as
-constituting a series, the later modifying the earlier; in no two cases is the
-relationship between content and narrator identical" (@Buxton1991 40). While
-the web of interrelated passages that emerges through the performance of this
-play is undeniable, Buxton's throughline does not depend on narrative per se but
-rather on a sense of place established by the five passages that he isolates. By
-instead isolating moments of high narrativity, I mean the highlight the tenuous
-relationship between performance and description and the ways that the two are
-not easily separated.
-
-"In the _Bacchae_ myth and action, odes and iambic scenes, are intertwined
-from the start, as is appropriate in a plot that represents a penetration of
-the secular world by a divine power" (@Foley1985 207–208).
+two Messengers' reports, Buxton writes, "these five narratives may be seen
+as constituting a series, the later modifying the earlier; in no two cases
+is the relationship between content and narrator identical" (@Buxton1991 40).
+While the web of interrelated passages that emerges through the performance
+of this play is undeniable, Buxton's throughline does not depend on narrative
+per se but rather on a sense of place established by the five passages that he
+isolates. By instead isolating moments of high narrativity, I mean to highlight
+the tenuous relationship between performance and description and the ways that
+the two are not easily separated. As Foley has observed, this difficulty gains
+special purchase within this play: "In the _Bacchae_ myth and action, odes and
+iambic scenes, are intertwined from the start, as is appropriate in a plot that
+represents a penetration of the secular world by a divine power" (@Foley1985
+207–208). The play's moments of narrative action ensure that, like Pentheus at
+918–922, the audience experiences double vision by seeing the narrative reports
+onstage and by witnessing the action in their minds.^[See @Zeitlin1994 [152]
+for how, as she puts it, Euripides "[expands] the traditional oracular quality
+of graphic signs into theatrical experimentation with the special powers of the
+visual imagination in the world of the stage."]
 
 "The action of the play gradually becomes, until the final scenes, fully
 ritualized and mythical, and Dionysiac poetry transforms reality as the chorus
@@ -414,6 +435,129 @@ on metatheatrical studies of the play will show that an important part of
 _Bacchae_'s self-conscious interest is directed at the status of the messengers,
 particularly with respect to how they define and are defined by Pentheus."
 (@Barrett2002 103)
+
+
+### Aeschylus' _Agamemnon_
+
+Having looked at the play with the highest difference in narrativity between traditionally labeled messengers and other speakers, I turn now to the play where that difference is smallest: Aeschylus' _Agamemnon_.
+
+![Chart showing per-sentence and rolling 7-sentence average narrativity for
+Aeschylus' _Agamemnon_](../figures/ALL_DRAMA_line_position_tlg0085.tlg005.png)
+
+While the speech Herald who announces the Achaeans' return from Troy (503–582,
+620–680) shows several peaks on the narrativity scale, these peaks pale in
+comparison to those of the parodos (40–257) and Clytaemestra's "Beacon Speech"
+(281–316). This array of narrative speeches and speakers casts doubt on the
+traditional labeling of messenger versus not—or even on messenger function
+versus not—suggesting that we should think in terms of narrative moments rather
+than narrative characters.
+
+The parodos opens with a long narrative sentence (40–54):
+
+| δέκατον μὲν ἔτος τόδʼ ἐπεὶ Πριάμου
+| μέγας ἀντίδικος
+| Μενέλαος ἄναξ ἠδʼ Ἀγαμέμνων,
+| διθρόνου Διόθεν καὶ δισκήπτρου
+| τιμῆς ὀχυρὸν ζεῦγος Ἀτρειδᾶν,
+| στόλον Ἀργείων χιλιοναύτην
+| τῆσδʼ ἀπὸ χώρας
+| ἦραν, στρατιῶτιν ἀρωγήν,
+| μεγάλ' ἐκ θυμοῦ κλάζοντες Ἄρη,
+| τρόπον αἰγυπιῶν οἵτʼ ἐκπατίοις
+| ἄλγεσι παίδων ὕπατοι λεχέων
+| στροφοδινοῦνται
+| πτερύγων ἐρετμοῖσιν ἐρεσσόμενοι,
+| δεμνιοτήρη
+| πόνον ὀρταλίχων ὀλέσαντες·
+
+| This is the tenth year since
+| the great plaintiff against Priam,
+| Lord Menelaus–and with him Agamemnon–
+| the strong yoked Atreids, consisting of
+| two-throned and two-sceptred honor from Zeus,
+| set sail from this land the thousand-shipped
+| fleet of Argives, their martial aid,
+| crying out "Ares" loudly from their spirit,
+| like vultures who, in lonely pains
+| for their children,
+| eddy around high above their nest,
+| rowing with the oars of their wings,
+| because they lost the bed-watching
+| toil of their chicks.
+
+The chorus quickly assumes a narrative stance in these opening anapests,
+including a near-simile about the vultures and their nest. As with the parodos
+in _Bacchae_, part of the narrative tilt here comes from extensive use of a
+third-person perspective, but third-person verbs do not suffice on their own for
+the model to classify a sentence as narrative. The following sentence, "Some god
+on high—Apollo or Pan or Zeus—hears the shrill-screaming bird-cried lament of
+these metics and sends a late-avenging [_hysteropoinos_] Erinys to their side"
+(55–60), also operates only in the third-person, but the model does not classify
+it as narrative. Although the model weights are a black box and difficult to
+interpret, the model's discrimination between these two sentences suggests that
+it picks up on genuine similarities and dissimilarities among passages that it
+classifies as narrative and not. In this case, perhaps the vocabulary has some
+influence: as @Griffin1986 [38 and passim] and others have noted, the Homeric
+narrative tends to avoid subjects like vengeance (_poinē_).
+
+"It is essential to observe that the reference to a 'sending' by Zeus does not
+come until it has been firmly established (40ff.) that Agamemnon and Menelaus
+are purusing a human quarrel (recalled at 62); and that it is led up to by the
+simile of the vultures. And how are the vultures avenged? By a special divine
+interposition? Did Aeschylus or his audience believe this? The vultures go
+after the robbers and avenge themselves, wit hthe backing of divine powers."
+(@Winnington-Ingram1983 86)
+
+Narrativity falls over the course of the _Agamemnon_, such that these early
+narrative moments establish the background before the play devolves into
+murder and Cassandra's chaotic speech. This change over time—one of two
+statistically significant decreases in narrativity, the other being Euripides'
+_Electra_—points to a change from story to spectacle. Like the beacon-flame
+itself, which Clytaemestra brings to rest upon the palace, the drama brings
+the action from distant Troy to the theater in front of the audience's eyes.
+As Winnington-Ingram observes, "To show [the events of _Agamemnon_] as the
+inevitable product of past events, to accumulate foreboding, right up to
+the striking blow, was well suited to the lyric mode which is employed"
+(@Winnington-Ingram1983 73–74).
+
+This tension builds not only thanks to the "lyric mode" of the drama but
+also due to the audience's growing realization that they must reconcile their
+internally visualized notion of narrated events with the action that gradually
+unfolds on- and just-off-stage. As Rancière writes, "Literature teaches us
+to choose between two interpretations: not two interpretations of the speech
+or actions of others, but two interpretations of our own perceptions and the
+feelings of affection that accompany them" (@Ranciere2005 101). _Agamemnon_,
+by gradually realizing our own misunderstandings in the spectacle that plays
+out before our eyes, builds tension by playing on the possibility that we have
+misunderstood.
+
+Narrative moments create this space for misunderstanding by refusing to
+reconcile our interpretations with the other audience members' and with what
+we see. Narrative thus creates the possibility for ruptured experience, for
+the pleasure and pain that accompany the sudden realization that we have not
+understood what we have heard and seen. Narrative moments thus also point to a
+leap of faith, a suspension of disbelief and trust in the reporter that might
+give way to betrayal. This trust and the possibilities that it raises stand at
+the heart not only of the theatrical endeavor but of every day communication: at
+a certain point, we must simply take our reporters at their word.
+
+Although the narrativity trendlines for _Choephoroi_ and _Eumenides_ lack
+statistical significance (their p-values are much greater than 0.05), taken with
+_Agamemnon_ we can see a clear trend away from narrative and towards speech.
+
+![Chart showing per-sentence and rolling 7-sentence average narrativity for
+Aeschylus' _Choephoroi_](../figures/ALL_DRAMA_line_position_tlg0085.tlg006.png)
+
+![Chart showing per-sentence and rolling 7-sentence average narrativity for
+Aeschylus' _Eumenides_](../figures/ALL_DRAMA_line_position_tlg0085.tlg007.png)
+
+Such a trend speaks to the trilogy's drive towards action that affects the
+audience: as an etiological tale, the _Oresteia_'s move from narrative to
+speech and action reinforces its explanation for the court on the Areopagus.
+But this movement is not one of diegesis to mimesis; it is rather a movement
+from narrative mimesis to dramatic mimesis, from representation by telling to
+representation by doing. CITATION AND SUPPORTING EVIDENCE
+
 
 ### Euripides' _Suppliants_
 

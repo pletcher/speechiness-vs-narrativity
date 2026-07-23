@@ -6,12 +6,12 @@ tell us about narrativity?
 ## Measuring narrativity in tragedy using a model trained on epic
 
 ```txt
-Messenger-speech sentences: 1547; other tragedy sentences: 24119
-P(narrative) mean: messenger=0.3531, other=0.0609
-Narrative classification rate: messenger=0.3581, other=0.0582
+Messenger-speech sentences: 1547; other tragedy sentences: 24831
+P(narrative) mean: messenger=0.3531, other=0.0619
+Narrative classification rate: messenger=0.3581, other=0.0594
 
-Mann-Whitney U (H1: messenger P(narrative) > other): U=25737081.5, p=5.928e-139
-Fisher's exact (H1: messenger narrative rate > other): odds_ratio=9.0262, p=1.197e-243
+Mann-Whitney U (H1: messenger P(narrative) > other): U=26462518.5, p=6.642e-138
+Fisher's exact (H1: messenger narrative rate > other): odds_ratio=8.8406, p=6.215e-241
 
 Per-play P(narrative) mean, messenger vs. other:
 is_messenger_speech     other  messenger
@@ -26,6 +26,7 @@ tlg0006.tlg007       0.054743   0.353074
 tlg0006.tlg008       0.058613   0.552202
 tlg0006.tlg009       0.064851   0.446833
 tlg0006.tlg010       0.070514   0.513995
+tlg0006.tlg011       0.098551        NaN
 tlg0006.tlg012       0.051583   0.319694
 tlg0006.tlg013       0.072374   0.267925
 tlg0006.tlg014       0.064814   0.341563
@@ -61,6 +62,7 @@ tlg0006.tlg007    0.298331
 tlg0006.tlg008    0.493589
 tlg0006.tlg009    0.381982
 tlg0006.tlg010    0.443481
+tlg0006.tlg011   -0.098551
 tlg0006.tlg012    0.268111
 tlg0006.tlg013    0.195552
 tlg0006.tlg014    0.276749
@@ -85,7 +87,7 @@ tlg0085.tlg006   -0.083231
 tlg0085.tlg007   -0.058252
 dtype: float64
 
-Wilcoxon signed-rank across 32 plays (H1: messenger - other > 0): W=514.0, p=2.561e-08
+Wilcoxon signed-rank across 33 plays (H1: messenger - other > 0): W=541.0, p=4.319e-08
 ```
 
 ## Narrativity of epic speakers

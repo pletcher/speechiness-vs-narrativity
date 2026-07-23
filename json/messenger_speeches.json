@@ -202,10 +202,6 @@
 		"messenger_speech_pct": 0.06971830985915493,
 		"speeches": [
 			[
-				284,
-				330
-			],
-			[
 				719,
 				734
 			],
@@ -414,6 +410,15 @@
 		"total_lines": 1622,
 		"urn": "urn:cts:greekLit:tlg0006.tlg010",
 		"year": -416
+	},
+	{
+		"dramatist": "Euripides",
+		"messenger_speech_pct": 0,
+		"speeches": [],
+		"title": "Trojan Women",
+		"total_lines": 1332,
+		"urn": "urn:cts:greekLit:tlg0006.tlg011",
+		"year": -415
 	},
 	{
 		"dramatist": "Euripides",

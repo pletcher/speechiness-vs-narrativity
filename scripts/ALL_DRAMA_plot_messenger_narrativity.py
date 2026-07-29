@@ -63,7 +63,7 @@ def plot_line_position(df: pd.DataFrame, plays: list[dict]) -> None:
             label="messenger-speech line range / sentence",
         ),
         plt.Line2D(
-            [], [], marker="o", linestyle="", color=COLOR_OTHER, label="other sentence"
+            [], [], marker="x", linestyle="", color=COLOR_OTHER, label="other sentence"
         ),
         plt.Line2D(
             [],
@@ -95,15 +95,24 @@ def plot_line_position(df: pd.DataFrame, plays: list[dict]) -> None:
         # line (adjacent clauses can jump from 0 to 1 with no real relation);
         # a rolling mean shows the local trend, which is what actually
         # reveals a span "lighting up".
+        is_messenger = play_df["is_messenger_speech"]
         ax.scatter(
-            play_df["line"],
-            play_df["p_narrative"],
+            play_df.loc[is_messenger, "line"],
+            play_df.loc[is_messenger, "p_narrative"],
             s=8,
-            c=[
-                COLOR_MESSENGER if m else COLOR_OTHER
-                for m in play_df["is_messenger_speech"]
-            ],
+            marker="o",
+            c=COLOR_MESSENGER,
             linewidths=0,
+            alpha=0.4,
+            zorder=2,
+        )
+        ax.scatter(
+            play_df.loc[~is_messenger, "line"],
+            play_df.loc[~is_messenger, "p_narrative"],
+            s=14,
+            marker="x",
+            c=COLOR_OTHER,
+            linewidths=0.8,
             alpha=0.4,
             zorder=2,
         )

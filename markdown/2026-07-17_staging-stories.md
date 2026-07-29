@@ -498,15 +498,65 @@ times, and forms of activity by inviting the chorus to learn what Ajax did "at
 the peak of night" (285: ἄκρας νυκτός).
 
 When she then ventriloquizes herself and Ajax, Tecmessa performs another
-essential narrative function by impersonating the characters in her story. Jonas
-Grethlein and others have argued that Plato's use of _mimēsis_ in _Republic_
-2 and 3 corresponds not to the Aristotelian "representation" but rather to
-"impersonation": "Direct speech is thus not a reproduction of what was said
-in a different ontological sphere but an act of impersonation" (@Grethlein2021
-[365], citing @Else1972 [23], @deJong1987 [3], and @Bakker2005 [61]). Tecmessa's
-narrative again reflects the sharing at the heart of _koinōnos_: by the ancient
-model, her ventriloquy works as if her audience were present for the original
-event.
+essential narrative function by impersonating the characters in her story.
+Jonas Grethlein and others have argued that Plato's use of _mimēsis_ in
+_Republic_ 2 and 3 corresponds not to the Aristotelian "representation"
+but rather to "impersonation": "Direct speech is thus not a reproduction of
+what was said in a different ontological sphere but an act of impersonation"
+(@Grethlein2021.Mimesis [365], citing @Else1972 [23], @deJong2011 [3], and
+@Bakker2005 [61]). Tecmessa's narrative again reflects the sharing at the heart
+of _koinōnos_: by the ancient model, her ventriloquy works as if her audience
+were present for the original event.
+
+Tecmessa's self-quotation both recalls and anticipates key moments in the drama in such a way that she also comments on her own delivery. She tells the chorus (288–91)
+
+| κἀγὼ 'πιπλήσσω καὶ λέγω, τί χρῆμα δρᾷς,
+| Αἴας; τί τήνδ' ἄκλητος οὔθ' ὑπ' ἀγγέλων
+| κληθεὶς ἀφορμᾷς πεῖραν οὔτε του κλύων
+| σάλπιγγος; ἀλλὰ νῦν γε πᾶς εὕδει στρατός.
+
+| And I chastised [Ajax] and said, "What are you doing,
+| Ajax? What is this attempt that you're starting unbidden,
+| when you haven't been called by messengers or heard
+| the salpinx? The whole army is asleep right now!"
+
+With her reference to the salpinx's summons, Tecmessa unknowingly recalls
+Odysseus' description of Athena's voice as "like a bronze-mouthed Tyrrhenian
+trumpet" (17: χαλκοστόμου κώδωνος ὡς τυρσηνικῆς) — a scholion explains that "a
+_kōdōn_ is the broad part of a salpinx" (_ad_ Soph. _Ai_. 17: κώδων καλεῖται
+τὸ πλατὺ τῆς σάλπιγγος). When she reminds Ajax that he has not been called by
+messengers, Tecmessa again unknowingly anticipates the messenger who arrives
+too late to save Ajax. Tecmessa's narrative style in this speech appears to have
+granted her some extra-dramatic perspective, such that her speech both informs
+the chorus—and the external audience—about what took place and guides the
+audience's understanding of how the drama fits together.
+
+Tecmessa then takes on the voice of Ajax, continuing to speak in a _diegesis
+di'amphoteron_ in the words of _Republic_ 3.392d–394c: "And he spoke to me
+few but well-worn words: / 'Woman, silence is a woman's decoration.' / And I
+listened and yielded, and he set out alone" (292–294: ὁ δ' εἶπε πρός με βαί',
+ἀεὶ δ' ὑμνούμενα· / "γύναι, γυναιξὶ κόσμον ἡ σιγὴ φέρει." / κάγω μαθοῦσ' ἔληξ',
+ὁ δ' ἐσσύθη μόνος). Tecmessa may have yielded in the moment, but she breaks her
+silence here to take on a narrator's voice for the chorus. Through the narrative
+style, Tecmessa stakes a claim to an authority that Ajax would not grant her.
+
+As her report progresses and she describes Ajax's mistreatment of the animals
+that he mistakes for the Achaean leaders, tension builds towards Ajax's eventual
+arrival on the _ekkyklema_ at 347, and the audience members' own imagined
+scenes of animal slaughter contribute to this tension. William Gruber describes
+the effect of narratives like Tecmessa's as "a kind of psychogenesis whereby
+only a few key stimuli are used by the mind to construct what then seem like
+real memories and fully complete visual perceptions" (@Gruber2010 31). Such
+a description accords with the cognitive narratological view put forth by
+@Grethlein2021.Mimesis: "Mimesis," he writes, "understood as impersonation,
+affects authors, reciters, and listeners alike, as it immerses them in the
+experiences of often questionable characters" (@Grethlein2021.Mimesis 367).
+From this perspective, Tecmessa's role as a reciter literally puts her in Ajax's
+place: she embodies his affects even as she describes them, and her audiences
+take them on, too. The narrative style enables Tecmessa to enact her immersion
+in Ajax's and her own experience. Tecmessa's performance thus also rejects the
+opposition between narrative and performance by presenting them as mutually
+sustaining modes of communicating dramatic action.
 
 ### Euripides' _Bacchae_
 
@@ -556,18 +606,38 @@ around the description of Dionysus' birth in the first antistrophe at 88–104:
 | throw the wild beast-eater
 | about their hair.^[Translations are my own.]
 
-Despite the metrical differences between this lyric verse and epic
-hexameter, the model correctly identifies the narrative passage of Dionysus'
-birth. This passage's narrative flavor comes partly from the concentration of
-third-person main verbs: ἔτεκεν twice, δέξατο, στεφάνωσέν, and ἀμφιβάλλονται.
-But if third-person verbs sufficed to identify narrative, then every
-third-person passage would be marked by the model—clearly the vector-space
-embeddings have identified other markers of epic narrative as well. For
-instance, we can also see that the passage's vocabulary and tenses seem to
-indicate the remoteness in time and place, rather than events taking place in
-the moment.
+Despite the metrical differences between this lyric verse and epic hexameter,
+the model correctly identifies the narrative passage of Dionysus' birth. This
+passage's narrative flavor comes partly from the concentration of third-person
+main verbs: ἔτεκεν twice, δέξατο, στεφάνωσέν, and ἀμφιβάλλονται. But if
+third-person verbs sufficed to identify narrative, then every third-person
+passage would be marked by the model—clearly the vector-space embeddings have
+identified other markers of epic narrative as well. For instance, we can also
+see that the passage's vocabulary and tenses seem to indicate the remoteness in
+time and place, rather than events taking place in the moment. In any case, the
+chorus' narrative role challenges any idea of patent borders for the messenger
+function by showing once again that narrative operates outside of such confines.
 
-This high-narrative moment has striking echoes in the first traditional
+Barrett seems to try to account for the fluidity of the messenger function when
+he writes,
+
+> It is not hard to see that any system of classification that could comprehend
+all of these figures in a single category would tell us little. But the
+challenge need not be that of deciding who is and who is not a messenger.
+Such a project, I submit, would amount to a matter of definition. A more
+productive approach, I suggest, is to recognize that all tragic messengers, near
+messengers, and pseudomessengers have been produced more or less in accordance
+with, or at variance with, a conventional, 'ideal' type. As such, these 'real'
+tragic figures represent the texts' ongoing engagement with an idealized
+conventional form. (@Barrett2002 97)
+
+But is it true that the chorus works "more or less in accordance with ...
+[an] 'ideal' type"? Or is it rather that onstage narrative signals the
+always-fraught claim to authority that characters make when they describe events
+their audiences cannot see?^[See @Bourdieu1991 [###] for a discussion of the
+_skeptron_ and its role in authorizing speech.]
+
+The chorus' high-narrative moment has striking echoes in the first traditional
 messenger-type speech, when the Messenger (@Buxton1991 calls this Messenger the
 "Cowherd") describes Agave and the maenads' ritual preparations. The maenads
 rearrange their fawnskins after the fastenings come loose (696–697), "and they
@@ -665,55 +735,12 @@ of a miracle, or presenting a theatrical illusion." (@Foley1985 221)
 Narrative serves as the playwright's technology for welcoming the initiand. The
 palace scene demands that the audience imagine events that cannot be staged,
 importing the practice of imagining events that they have honed on the narrative
-of the parodos so that they can see even what they are not shown.Perhaps there
+of the parodos so that they can see even what they are not shown. Perhaps there
 really were special effects representing fire (596) and lightning bolts (594,
 598–99), or perhaps pillars representing the palace really fell down. Either
 way, as Foley argues, the audience must see more than what is shown onstage, and
 so must join their imagined visualizations with the chorus' descriptions—just as
 they must do during moments of heightened narrative.
-
-"It is not hard to see that any system of classification that could comprehend
-all of these figures in a single category would tell us little. But the
-challenge need not be that of deciding who is and who is not a messenger.
-Such a project, I submit, would amount to a matter of definition. A more
-productive approach, I suggest, is to recognize that all tragic messengers, near
-messengers, and pseudomessengers have been produced more or less in accordance
-with, or at variance with, a conventional, 'ideal' type. As such, these 'real'
-tragic figures represent the texts' ongoing engagement with an idealized
-conventional form." (@Barrett2002 97)
-
-- Right, so this gets close but doesn't seem to be quite right. It's rather that
-all speakers in tragedy --- including choruses! --- are more or less narrative.
-(But is "narrative" opposed to "dramatic" here?)
-
-"I will argue that Buxton's formulation, although laudable for the attention
-it pays to rhetorical variation in the narratives it studies, simplifies the
-status of the messengers in Euripides' play [_Bacchae_]. Rather than being
-'firmly _within_ the drama,' the messengers occupy a place on the stage
-very different from that of the other _dramatis personae_. A reading founded
-on metatheatrical studies of the play will show that an important part of
-_Bacchae_'s self-conscious interest is directed at the status of the messengers,
-particularly with respect to how they define and are defined by Pentheus."
-(@Barrett2002 103)
-
-
-### Euripides' _Suppliants_
-
-_Suppliants_ does not have the same narrative echoes, but it's interesting
-that only one speech registers as narrative, when it has both a herald and
-a messenger.
-
-### Sophocles' _Electra_
-
-Unsurprisingly, Sophocles' _Electra_ ranks among the most striking examples
-of the messenger function's high narravity, with the Tutor's speech sustaining
-scores above 0.5 for nearly its entire duration.
-
-![Scatter plot with a trendline showing seven-sentence average narrativity for
-Sophocles' _Electra_](../figures/ALL_DRAMA_line_position_tlg0011.tlg005.png)
-
-The rest of the play, by contrast, barely breaks above a narrativity score
-of 0.2.
 
 ## Argument/interpretation
 
@@ -743,7 +770,7 @@ the objects of knowledge themselves can think and know" [@Ranciere2009 17].
 "Fiction is a way of changing existing modes of sensory presentations and forms
 of enunciation; of varying frames, scales and rhythms; and of building new
 relationships between reality and appearance, the individual and the collective"
-(@Ranciere2010 [149]; quoted in @OLeary2024 [52])
+(@Ranciere2015 [149]; quoted in @OLeary2024 [52])
 
 "_Textual space_, not to be confused with dramatic space (the way in which
 a text talks about sapce), is a metaphor for the enunciation of the text in

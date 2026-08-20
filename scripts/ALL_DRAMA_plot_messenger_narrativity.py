@@ -3,13 +3,12 @@ from pathlib import Path
 import altair as alt
 import matplotlib.pyplot as plt
 import pandas as pd
-from scipy.stats import linregress, mannwhitneyu
-
 from ALL_DRAMA_compare_messenger_speeches import (
     build_sentence_table,
     load_messenger_speeches,
     urn_to_stem,
 )
+from scipy.stats import linregress, mannwhitneyu
 
 ROOT_DIR = Path(__file__).parent.parent
 RESULTS_CSV = ROOT_DIR / "csv" / "ALL_DRAMA_messenger_speech_narrativity.csv"
@@ -164,8 +163,8 @@ def plot_line_position(df: pd.DataFrame, plays: list[dict]) -> None:
             bbox_to_anchor=(1.18, 1.0),
         )
 
-        out_path = FIG_DIR / f"ALL_DRAMA_line_position_{play}.png"
-        fig.savefig(out_path, dpi=200, bbox_inches="tight")
+        out_path = FIG_DIR / f"ALL_DRAMA_line_position_{play}_7-SENTENCE_WINDOW.png"
+        fig.savefig(out_path, dpi=300, bbox_inches="tight")
         plt.close(fig)
         print(f"Wrote {out_path}")
 
@@ -226,7 +225,7 @@ def plot_distribution(df: pd.DataFrame) -> None:
     ax.text(
         0.5,
         1.0,
-        f"diamond = mean; Mann-Whitney p = {mw_p:.2g}",
+        f"Mann-Whitney p = {mw_p:.2g}",
         transform=ax.transAxes,
         ha="center",
         va="bottom",
@@ -234,7 +233,7 @@ def plot_distribution(df: pd.DataFrame) -> None:
         color=COLOR_TEXT,
     )
     ax.set_title(
-        "P(narrative): messenger-speech vs. other tragedy sentences",
+        "Messengers vs. other speakers in tragedy",
         fontsize=10.5,
         color=COLOR_TEXT,
         pad=14,
@@ -242,7 +241,7 @@ def plot_distribution(df: pd.DataFrame) -> None:
 
     FIG_DIR.mkdir(exist_ok=True, parents=True)
     out_path = FIG_DIR / "ALL_DRAMA_distribution.png"
-    fig.savefig(out_path, dpi=200, bbox_inches="tight")
+    fig.savefig(out_path, dpi=300, bbox_inches="tight")
     print(f"Wrote {out_path}")
 
 
@@ -275,7 +274,7 @@ def plot_change_over_time(df: pd.DataFrame, plays: list[dict]) -> None:
             x=alt.X(
                 "year:Q",
                 title="approx. production year (BCE shown as negative)",
-                scale=alt.Scale(domain=[-500, -400]),
+                scale=alt.Scale(domain=[-480, -400]),
             ),
             y=alt.Y(
                 "p_narrative:Q",
